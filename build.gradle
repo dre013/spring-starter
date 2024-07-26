@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+    id "io.freefair.lombok" version "8.6"
+}
+
+configurations {
+    querydsl.extendsFrom implementation, compileOnly, runtimeOnly
+}
+
+group = 'by.dre'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.postgresql:postgresql'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+
+    testImplementation 'org.springframework.security:spring-security-test'
+    annotationProcessor 'com.querydsl:querydsl-apt'
+}
+
+querydsl {
+    jpa = true
+    library = 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+    querydslSourcesDir = "$buildDir/generated/sources/annotationProcessor/java/main"
+}
+
+initQuerydslSourcesDir.dependsOn clean
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+test {
+    useJUnitPlatform()
+}

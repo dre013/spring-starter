@@ -1,0 +1,6 @@
+2024-07-25T01:47:53.244+03:00  INFO 14852 --- [main] by.dre.spring.config.JpaConfiguration    : JpaConfiguration is enabled
+2024-07-25T01:47:53.252+03:00  INFO 14852 --- [main] b.d.s.d.repository.pool.ConnectionPool   : Init ConnectionPool
+2024-07-25T01:47:53.790+03:00  INFO 14852 --- [main] b.d.s.d.repository.pool.ConnectionPool   : Init ConnectionPool
+2024-07-25T02:08:07.032+03:00  INFO 16412 --- [main] by.dre.spring.config.JpaConfiguration    : JpaConfiguration is enabled
+2024-07-25T02:08:07.038+03:00  INFO 16412 --- [main] b.d.s.d.repository.pool.ConnectionPool   : Init ConnectionPool
+2024-07-25T02:08:07.540+03:00  INFO 16412 --- [main] b.d.s.d.repository.pool.ConnectionPool   : Init ConnectionPool
